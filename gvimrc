@@ -21,6 +21,11 @@ Plugin 'tpope/vim-sensible'           " https://github.com/tpope/vim-sensible
 Plugin 'terryma/vim-multiple-cursors' " https://github.com/terryma/vim-multiple-cursors
 Plugin 'scrooloose/nerdtree'          " https://github.com/scrooloose/nerdtree
 Plugin 'bling/vim-airline'            " https://github.com/bling/vim-airline
+Plugin 'tpope/vim-fugitive'           " https://github.com/tpope/vim-fugitive
+Plugin 'junegunn/goyo.vim'            " https://github.com/junegunn/goyo.vim
+Plugin 'junegunn/limelight.vim'       " https://github.com/junegunn/limelight.vim
+Plugin 'davidhalter/jedi-vim'         " https://github.com/davidhalter/jedi-vim
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " REQUIRED!
 filetype plugin indent on    " REQUIRED!
@@ -42,7 +47,7 @@ filetype plugin indent on    " REQUIRED!
 " =============================================================================
 
 let g:airline_powerline_fonts=1 " Airline - Enable Powerline fonts (https://github.com/powerline/fonts)
-set guifont =Inconsolata\ for\ Powerline\ Medium\ 12 " Use the Powerline-compatible font.
+set guifont=Liberation\ Mono\ for\ Powerline\ 11
 
 " =============================================================================
 " General Configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,7 +77,7 @@ set encoding=utf-8
 " =============================================================================
 
 if has('gui_running')
-  set guioptions-=T  " no toolbar
+    set guioptions-=T  " no toolbar
 endif
 
 set t_Co=256               " enable 256-color mode.
@@ -86,14 +91,22 @@ set wrapmargin=0
 colorscheme badwolf        " BADWOLF: Set colorscheme.
 let g:badwolf_darkgutter=1 " BADWOLF: Make gutter color darker than the background of the file.
 
+augroup vimrc_autocmds
+    autocmd!
+    " highlight characters past column 81
+    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=IndianRed3
+    autocmd FileType python match Excess /\%81v.*/
+    autocmd FileType python set nowrap
+    augroup END
+
 " =============================================================================
 " Custom Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " =============================================================================
 
 " The visual mode mappings below have issues. Just avoid them if possible.
-nnoremap <A-j> :m .+1<CR>==        " Alt-j > Move current line(s) down in normal mode.
 nnoremap <A-k> :m .-2<CR>==        " Alt-k > Move current line(s) up in normal mode.
 inoremap <A-j> <Esc>:m .+1<CR>==gi " Alt-j > Move current line(s) down in insert mode.
 inoremap <A-k> <Esc>:m .-2<CR>==gi " Alt-k > Move current line(s) up in insert mode.
 vnoremap <A-j> :m '>+1<CR>gv=gv    " Alt-j > Move current line(s) down in visual mode. 
 vnoremap <A-k> :m '<-2<CR>gv=gv    " Alt-k > Move current line(s) up in normal mode.
+nnoremap <A-j> :m .+1<CR>==        " Alt-j > Move current line(s) down in normal mode.
