@@ -1,20 +1,60 @@
-" TODO: Figure out what the hell I'm doing.
+" =============================================================================
+" I don't know what I'm doing! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" =============================================================================
 
-" =============================================================
-set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
+" =============================================================================
+" Vundle Settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" =============================================================================
 
-" =============================================================
-"                     General Configuration
-" =============================================================
+filetype off                 " Vundle told me to do this.
+set nocompatible             " get rid of Vi compatibility mode. SET FIRST!
 
-filetype indent on        " activates indenting for files
+" Set the runtime path to include Vundle and initialize.
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Alternately, pass a different path where Vundle should initialize plugins.
+" call vundle#begin('~/some/path/here')
+
+Plugin 'gmarik/Vundle.vim'            " REQUIRED! Let Vundle manage Vundle.
+
+Plugin 'tpope/vim-sensible'           " https://github.com/tpope/vim-sensible
+Plugin 'terryma/vim-multiple-cursors' " https://github.com/terryma/vim-multiple-cursors
+Plugin 'scrooloose/nerdtree'          " https://github.com/scrooloose/nerdtree
+Plugin 'bling/vim-airline'            " https://github.com/bling/vim-airline
+" All of your Plugins must be added before the following line
+call vundle#end()            " REQUIRED!
+filetype plugin indent on    " REQUIRED!
+
+" To ignore plugin indent changes, instead use:
+" filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" =============================================================================
+" Plugin Settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" =============================================================================
+
+let g:airline_powerline_fonts=1 " Airline - Enable Powerline fonts (https://github.com/powerline/fonts)
+set guifont =Inconsolata\ for\ Powerline\ Medium\ 12 " Use the Powerline-compatible font.
+
+" =============================================================================
+" General Configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" =============================================================================
+
 set nohlsearch            " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
-set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
+set ruler                 " Always show info along bottom.
 set tabstop=4             " tab spacing
-set softtabstop=4         " unify
+set softtabstop=4         " TODO: I'm not sure what this does exactly.
 set shiftwidth=4          " indent/outdent by 4 columns
 set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
@@ -25,29 +65,32 @@ syntax enable             " enable syntax highlighting (previously syntax on).
 set number                " show line numbers
 set laststatus=2          " last window always has a statusline
 
-if &encoding ==# 'latin1' && has('gui_running')
-  set encoding=utf-8
-endif
+set encoding=utf-8
+
+" =============================================================================
+" Visual Styling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" =============================================================================
 
 if has('gui_running')
   set guioptions-=T  " no toolbar
-  colorscheme elflord
 endif
 
-" =============================================================
-"                       Visual Styling
-" =============================================================
-set t_Co=256              " enable 256-color mode.
-colorscheme desert        " set colorscheme
-set wrap
-set linebreak
-set nolist
+set t_Co=256               " enable 256-color mode.
 
-" =============================================================
-"                            Mappings
-" =============================================================
+set wrap                   " Enable word-wrap.
+set linebreak              " Only break at breakat characters.
+set nolist                 " list disables linebreak
+set textwidth=0
+set wrapmargin=0
 
-" The visual mode mappings below have issues. Just avoid them for now.
+colorscheme badwolf        " BADWOLF: Set colorscheme.
+let g:badwolf_darkgutter=1 " BADWOLF: Make gutter color darker than the background of the file.
+
+" =============================================================================
+" Custom Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" =============================================================================
+
+" The visual mode mappings below have issues. Just avoid them if possible.
 nnoremap <A-j> :m .+1<CR>==        " Alt-j > Move current line(s) down in normal mode.
 nnoremap <A-k> :m .-2<CR>==        " Alt-k > Move current line(s) up in normal mode.
 inoremap <A-j> <Esc>:m .+1<CR>==gi " Alt-j > Move current line(s) down in insert mode.
