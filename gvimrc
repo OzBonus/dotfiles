@@ -39,7 +39,9 @@ endif
 " =============================================================
 set t_Co=256              " enable 256-color mode.
 colorscheme desert        " set colorscheme
-
+set wrap
+set linebreak
+set nolist
 
 " =============================================================
 "                            Mappings
