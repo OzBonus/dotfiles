@@ -3,7 +3,7 @@
 " =============================================================================
 
 " =============================================================================
-" Vundle Settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"                              Vundle Settings
 " =============================================================================
 
 filetype off                 " Vundle told me to do this.
@@ -93,9 +93,9 @@ let g:badwolf_darkgutter=1 " BADWOLF: Make gutter color darker than the backgrou
 
 augroup vimrc_autocmds
     autocmd!
-    " highlight characters past column 81
-    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=IndianRed3
-    autocmd FileType python match Excess /\%81v.*/
+    " highlight characters past column 80
+    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python match Excess /\%80v.*/
     autocmd FileType python set nowrap
     augroup END
 
@@ -104,9 +104,17 @@ augroup vimrc_autocmds
 " =============================================================================
 
 " The visual mode mappings below have issues. Just avoid them if possible.
-nnoremap <A-k> :m .-2<CR>==        " Alt-k > Move current line(s) up in normal mode.
-inoremap <A-j> <Esc>:m .+1<CR>==gi " Alt-j > Move current line(s) down in insert mode.
-inoremap <A-k> <Esc>:m .-2<CR>==gi " Alt-k > Move current line(s) up in insert mode.
-vnoremap <A-j> :m '>+1<CR>gv=gv    " Alt-j > Move current line(s) down in visual mode. 
-vnoremap <A-k> :m '<-2<CR>gv=gv    " Alt-k > Move current line(s) up in normal mode.
-nnoremap <A-j> :m .+1<CR>==        " Alt-j > Move current line(s) down in normal mode.
+nnoremap <A-k> :m .-2<CR>==        " Alt-k         > Move current line(s) up in normal mode.
+inoremap <A-j> <Esc>:m .+1<CR>==gi " Alt-j         > Move current line(s) down in insert mode.
+inoremap <A-k> <Esc>:m .-2<CR>==gi " Alt-k         > Move current line(s) up in insert mode.
+vnoremap <A-j> :m '>+1<CR>gv=gv    " Alt-j         > Move current line(s) down in visual mode. 
+vnoremap <A-k> :m '<-2<CR>gv=gv    " Alt-k         > Move current line(s) up in normal mode.
+nnoremap <A-j> :m .+1<CR>==        " Alt-j         > Move current line(s) down in normal mode.
+
+nmap <CR> o<Esc>                   " Enter         > Add empty line below the cursor in normal mode.
+nmap <S-Enter> O<Esc>              " Shift + Enter > Add an empty line above the cursor in normal mode.
+
+nnoremap <C-J> <C-W><C-J>          " Ctrl-J        > Easy buffer switching in normal mode - down.
+nnoremap <C-K> <C-W><C-K>          " Ctrl-K        > Easy buffer switching in normal mode - up.
+nnoremap <C-L> <C-W><C-L>          " Ctrl-L        > Easy buffer switching in normal mode - right.
+nnoremap <C-H> <C-W><C-H>          " Ctrl-H        > Easy buffer switching in normal mode - left.
