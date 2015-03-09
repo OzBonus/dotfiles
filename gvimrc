@@ -17,14 +17,13 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'            " REQUIRED! Let Vundle manage Vundle.
 
-Plugin 'tpope/vim-sensible'           " https://github.com/tpope/vim-sensible
-Plugin 'terryma/vim-multiple-cursors' " https://github.com/terryma/vim-multiple-cursors
+"Plugin 'tpope/vim-sensible'           " https://github.com/tpope/vim-sensible
+"Plugin 'terryma/vim-multiple-cursors' " https://github.com/terryma/vim-multiple-cursors
 Plugin 'scrooloose/nerdtree'          " https://github.com/scrooloose/nerdtree
 Plugin 'bling/vim-airline'            " https://github.com/bling/vim-airline
-Plugin 'tpope/vim-fugitive'           " https://github.com/tpope/vim-fugitive
-Plugin 'junegunn/goyo.vim'            " https://github.com/junegunn/goyo.vim
-Plugin 'junegunn/limelight.vim'       " https://github.com/junegunn/limelight.vim
-Plugin 'davidhalter/jedi-vim'         " https://github.com/davidhalter/jedi-vim
+"Plugin 'tpope/vim-fugitive'           " https://github.com/tpope/vim-fugitive
+"Plugin 'davidhalter/jedi-vim'         " https://github.com/davidhalter/jedi-vim
+Plugin 'sjl/badwolf'                  " https://github.com/sjl/badwolf
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " REQUIRED!
