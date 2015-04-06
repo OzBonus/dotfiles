@@ -60,6 +60,8 @@ let g:badwolf_darkgutter=1
 
 Plugin 'vim-scripts/figlet.vim'
 
+Plugin 'jiangmiao/auto-pairs'
+
 call vundle#end()
 filetype plugin on
 filetype indent on
@@ -152,12 +154,17 @@ set cursorline
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T " Hide tool bar.
+    set guioptions-=m " Hide menu bar.
     set guioptions-=e " Terminal-style tab menu.
     set guioptions-=r " Hide right scroll bar.
     set guioptions-=L "  Hide left scroll bar.
     set t_Co=256
     set guitablabel=%M\ %t
     set guifont=liberation\ mono\ for\ powerline\ 14
+endif
+
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
