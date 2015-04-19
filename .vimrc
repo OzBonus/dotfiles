@@ -1,31 +1,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
+"       Christopher Perry
 " Version: 
-"       5.0 - 29/05/12 15:43:36
-"
-" Blog_post: 
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version: 
-"       http://amix.dk/vim/vimrc.txt
-"
-" Inspired:
+"       0.1 2015 April 16
+" Blog_Post: 
+"       Coming Later
+" Repository:
+"       Give me minute, I'll get it sorted.
+" Inspired_By:
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
-"
 " Sections:
 "    $gen General
 "    $use VIM user interface
@@ -55,12 +39,15 @@ let g:airline_powerline_fonts=1
 
 Plugin 'scrooloose/nerdtree'
 
-Plugin 'sjl/badwolf'
-let g:badwolf_darkgutter=1
-
 Plugin 'vim-scripts/figlet.vim'
 
 Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'klen/python-mode'
 
 call vundle#end()
 filetype plugin on
@@ -146,8 +133,8 @@ set tm=500
 syntax enable
 
 " Adjust the colorscheme.
-colorscheme badwolf
-
+colorscheme solarized
+set background=dark
 " Highlight the current line.
 set cursorline
 
@@ -158,9 +145,10 @@ if has("gui_running")
     set guioptions-=e " Terminal-style tab menu.
     set guioptions-=r " Hide right scroll bar.
     set guioptions-=L "  Hide left scroll bar.
-    set t_Co=256
     set guitablabel=%M\ %t
     set guifont=liberation\ mono\ for\ powerline\ 14
+    set background=dark
+    highlight MatchParen cterm=bold ctermfg=cyan
 endif
 
 if $COLORTERM == 'gnome-terminal'
@@ -173,6 +161,10 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" Once upon a time I tried to set up a method to change the cursor's shape
+" according to Vim's mode. Let this comment stand as a reminder that it was a
+" terrible idea. It slowed down Vim and messed up the cursor across all
+" terminal sessions.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
