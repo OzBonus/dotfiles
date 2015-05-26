@@ -1,9 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Christopher Perry
-" Version: 
+" Version:
 "       0.1 2015 April 16
-" Blog_Post: 
+" Blog_Post:
 "       Coming Later
 " Repository:
 "       Give me minute, I'll get it sorted.
@@ -34,6 +34,9 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Let Vundle manage Vundle. Required!
+Plugin 'gmarik/Vundle.vim'
+
 Plugin 'bling/vim-airline'
 let g:airline_powerline_fonts=1
 
@@ -47,7 +50,10 @@ Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'klen/python-mode'
+Plugin 'elzr/vim-json'
+let g:vim_json_syntax_conceal=0
+
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin on
@@ -74,6 +80,8 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 nmap <leader>s :so%<cr>
 
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -107,7 +115,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " For regular expressions turn magic on
@@ -132,9 +140,9 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
+
 " Adjust the colorscheme.
 colorscheme solarized
-set background=dark
 " Highlight the current line.
 set cursorline
 
@@ -148,7 +156,6 @@ if has("gui_running")
     set guitablabel=%M\ %t
     set guifont=liberation\ mono\ for\ powerline\ 14
     set background=dark
-    highlight MatchParen cterm=bold ctermfg=cyan
 endif
 
 if $COLORTERM == 'gnome-terminal'
@@ -169,7 +176,7 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Turn backup off, since most stuff is in SVN, git &c anyway...
 set nobackup
 set nowb
 set noswapfile
@@ -178,19 +185,23 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax-specific settings should be be in ~/.vim/ftplugin/xxx.vim where xxx is
+" the name of the bespoke syntax.
+
 " Use spaces instead of tabs
-set expandtab
+" set expandtab
 
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
 
-" Linebreak on 500 characters
+" Linebreak on infinite characters
 set lbr
-set tw=500
+set tw=0
 
 set ai "Auto indent
 set si "Smart indent
@@ -236,7 +247,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
