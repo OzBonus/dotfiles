@@ -143,6 +143,7 @@ syntax enable
 
 " Adjust the colorscheme.
 colorscheme solarized
+set background=dark
 " Highlight the current line.
 set cursorline
 
