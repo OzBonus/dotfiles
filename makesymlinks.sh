@@ -9,26 +9,27 @@
 
 ########## Variables
 
-dir=~/dotfiles            # dotfiles directory
-olddir=~/dotfiles_old     # old dotfiles backup directory
-files=".vimrc"  # list of files/folders to symlink in homedir
+DOTDIR=~/dotfiles            # dotfiles directory
+OLDDIR=~/dotfiles_old     # old dotfiles backup directory
+FILES=".vimrc"  # list of files/folders to symlink in homedir
 
 ##########
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
+echo "Creating $OLDDIR for backup of any existing dotfiles in ~"
+mkdir -p $OLDDIR
 echo "...done"
 
 # change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
+echo "Changing to the $DOTDIR directory"
+cd $DOTDIR
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks.
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/$file
-done
+for file in $FILES
+    do
+        echo "Moving any existing dotfiles from ~ to $OLDDIR"
+        mv ~/$FILES ~/dotfiles_old/
+        echo "Creating symlink to $FILES in home directory."
+        ln -s $DOTDIR/$FILES ~/$FILES
+    done

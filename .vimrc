@@ -155,7 +155,7 @@ if has("gui_running")
     set guioptions-=r " Hide right scroll bar.
     set guioptions-=L "  Hide left scroll bar.
     set guitablabel=%M\ %t
-    set guifont=liberation\ mono\ for\ powerline\ 14
+    set guifont=liberation\ mono\ for\ powerline\ 12
     set background=dark
 endif
 

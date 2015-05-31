@@ -1,91 +1,157 @@
 #!/bin/bash
-# Ridiculous comment test.
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
+
 clear
-VAR1="cheese"
-VAR2="crackers"
-echo $VAR1 $VAR2
-NUM_A=99
-NUM_B=100
-if [ NUM_A = 100 ]
-	then
-		echo "NUM_A is equal to 100"
-else
-	echo "NUM_A is not equal to 100"
-fi
-FOOEY=(
-	"foo"
-	"bar"
-	"foobar"
-	"barfoo"
-)
-echo ${FOOEY[@]}
-TESTY=()
-echo ${TESTY[@]}
-TESTY=("${TESTY[@]}" "a" "b" "c" "d")
-echo ${TESTY[@]}
-TESTY=("${TESTY[@]}" "1" "2" "3" "4")
-echo ${TESTY[@]}
-echo -e "\nAdd some animal names to TESTY?"
-while true; do
-	read -p "What is your decision? (y/n) >> " YN
-	case $YN in
-		[Yy]* ) TESTY=("${TESTY[@]}" "mouse" "manatee" "fox"); break;;
-		[Nn]* ) break;;
-	esac
-done
-echo ${TESTY[@]}
+
 
 TODO_REPOS=()
 TODO_PACKS=()
 
 
-# This script will install the repositories and packages necessary to get my
-# machine back to the condition where I can meet my work and leisure goals.
-# Each piece of software will be installed if after an affirmative response to a
-# yes/no prompt.
+# Confirmation function only for regular packages.
+function confirmation() {
+    while true
+    do
+        read -p "Enter your decision. (y/n) >> " YN
+        case $YN in
+            [Yy]* ) TODO_REPOS=("${TODO_REPOS[@]}" "${REPOS[@]}")
+                    TODO_PACKS=("${TODO_PACKS[@]}" "${PACKS[@]}")
+                    break;;
+            [Nn]* ) break;;
+        esac
+    done
+}
 
-# Ideally, I would like the script to create a list of repositories and
-# packages, and add/install them all at once, after having gone through all of
-# the prompts. Since I don't really know what I am doing with Bash, however, I
-# guess I will just have to install each set of repositories and packages after
-# their respective prompts.
 
-# Install htop.
-echo -e "\nWould you like to install htop?"
-while true; do
-	read -p "Enter your decision. (y/n) >> " YN
-	case $YN in
-		[Yy]* ) sudo apt-get install htop; break;;
-		[Nn]* ) break;;
-	esac
-done
+echo "Let's begin by installing some regular packages."
+
 
 # Install Midnight Commander.
+REPOS=()
+PACKS=("mc")
 echo -e "\nWould you like to install Midnight Commander?"
-while true; do
-	read -p "Enter your decision. (y/n) >> " YN
-	case $YN in
-		[Yy]* ) sudo apt-get -y install mc; break;;
-		[Nn]* ) break;;
-	esac
-done
+confirmation
 
-# Install vim-gnome
 
-# Install vundle.
+# Install htop.
+REPOS=()
+PACKS=("htop")
+echo -e "\nWould you like to install htop?"
+confirmation
 
-# Install Powerline fonts.
 
-# Install Dropbox.
+# Install Vim.
+REPOS=()
+PACKS=("vim-gnome")
+echo -e "\nWould you like to install vim-gnome?"
+confirmation
+
 
 # Install SciPy.
+REPOS=()
+PACKS=("python-numpy" "python-scipy" "python-matplotlib" "ipython" "ipython-notebook" "python-pandas" "python-sympy" "python-nose")
+echo -e "\nWould you like to install SciPy?"
+confirmation
 
-# Install setuptools.
 
-# Install pip.
+# Install Latex.
+REPOS=()
+PACKS=("texlive-latex-base")
+echo -e "\nWould you like to install Latex?"
+confirmation
 
-# Install virtualenv.
 
-# Install Steam.
+# Install Kodi.
+REPOS=("ppa:team-xbmc/ppa")
+PACKS=("software-properties-common" "kodi")
+echo -e "\nWould you like to install Kodi?"
+confirmation
 
-# Install Kodi Media Player
+
+echo -e "\nYou are about the following repositories and packages:"
+
+
+# Because local variables are only allowed in functions. WTF?
+function todo_list() {
+local count=1
+echo -e "\n# REPOSITORIES ################"
+for repo in ${TODO_REPOS[@]}
+do
+    echo $count $repo
+    ((count++))
+done
+local count=1
+echo -e "\n# PACKAGES ####################"
+for repo in ${TODO_PACKS[@]}
+do
+    echo $count $repo
+    ((count++))
+done
+}
+todo_list
+
+
+echo
+while true
+do
+    read -p "Enter your decision (y/n) >> " YN
+    case $YN in
+        [Yy]* ) sudo add-apt-repository -y ${TODO_REPOS[@]}
+                sudo apt-get update
+                sudo apt-get -y install ${TODO_PACKS[@]}
+                break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+echo -e "\nNow for some other stuff. You'll need git installed for most of it."
+
+
+# Install Vundle.
+while true
+do
+    echo
+    read -p "Install Vundle? (y/n) >> " YN
+    case $YN in
+        [Yy]* ) git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+                break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+# Install Powerline fonts.
+while true
+do
+    echo
+    read -p "Install Powerline fonts? (y/n) >> " YN
+    case $YN in
+        [Yy]* ) git clone https://github.com/powerline/fonts.git ~/powerline-fonts
+                cd ~/powerline-fonts
+                ./install.sh
+                cd ~/
+                rm -rf ~/powerline-fonts
+                break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+# Install pip and virtualenv.
+while true
+do
+    echo
+    read -p "Install pip and virtualenv? (y/n) >> " YN
+    case $YN in
+        [Yy]* ) curl -o ~/get-pip.py --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py
+                sudo python ~/get-pip.py
+                sudo pip install virtualenv
+                break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+exit 0
