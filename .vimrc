@@ -55,6 +55,9 @@ let g:vim_json_syntax_conceal=0
 
 Plugin 'tpope/vim-surround'
 
+Plugin 'chriskempson/base16-vim'
+let base16colorspace=256
+
 call vundle#end()
 filetype plugin on
 filetype indent on
@@ -142,7 +145,7 @@ syntax enable
 
 
 " Adjust the colorscheme.
-colorscheme solarized
+colorscheme base16-default
 set background=dark
 " Highlight the current line.
 set cursorline
