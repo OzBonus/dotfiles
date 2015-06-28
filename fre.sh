@@ -106,7 +106,7 @@ do
 done
 
 
-echo -e "\nNow for some other stuff. You'll need git installed for most of it."
+echo -e "\nNow for some other stuff. You'll need git installed for some of it."
 
 
 # Install Vundle.
@@ -139,15 +139,57 @@ do
 done
 
 
-# Install pip and virtualenv.
+# Install pip, virtualenv, and virtualenvwrapper.
 while true
 do
     echo
-    read -p "Install pip and virtualenv? (y/n) >> " YN
+    read -p "Install pip, virtualenv, and virtualenvwrapper? (y/n) >> " YN
     case $YN in
         [Yy]* ) curl -o ~/get-pip.py --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py
                 sudo python ~/get-pip.py
                 sudo pip install virtualenv
+                sudo pip install virtualenvwrapper
+                if ! grep "WORKON_HOME=~/Envs" ~/.bashrc     # Check if venvwrapper is already set up.
+                then
+                    echo "WORKON_HOME=~/Envs" >> ~/.bashrc   # Set up venvwrapper if need be.
+                fi
+                source /usr/local/bin/virtualenvwrapper.sh # Activate venvwrapper.
+                break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+# Set terminal to 256 colors.
+while true
+do
+    echo
+    read -p "Want 256 color support for x-term? (y/n) >> " YN
+    case $YN in
+        [Yy]* ) if grep "TERM=xterm-256color" ~/.bashrc
+                then
+                    echo "That's already set, dude."
+                else
+                    echo "TERM=xterm-256color" >> ~/.bashrc
+                fi
+                break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+# Set short directory location.
+while true
+do
+    echo
+    read -p "Want to shorten the command priompt? (y/n) >> " YN
+    case $YN in
+        [Yy]* ) if grep "PROMPT_DIRTRIM=2" ~/.bashrc
+                then
+                    echo "Already there. There's no need to do that twice."
+                else
+                    echo "PROMPT_DIRTRIM=2" >> ~/.bashrc
+                fi
                 break;;
         [Nn]* ) break;;
     esac
