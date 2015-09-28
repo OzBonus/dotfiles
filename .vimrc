@@ -47,8 +47,6 @@ Plugin 'vim-scripts/figlet.vim'
 
 Plugin 'jiangmiao/auto-pairs'
 
-Plugin 'altercation/vim-colors-solarized'
-
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'elzr/vim-json'
@@ -59,7 +57,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'chriskempson/base16-vim'
 let base16colorspace=256
 
-Plugin 'junegunn/goyo.vim'
+Plugin 'jelera/vim-javascript-syntax'
+
+Plugin 'pangloss/vim-javascript'
+
+Plugin 'nathanaelkane/vim-indent-guides'
+
 
 call vundle#end()
 filetype plugin on
