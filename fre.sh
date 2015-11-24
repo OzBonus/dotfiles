@@ -196,4 +196,39 @@ do
 done
 
 
+# In i3-gaps and RICE THAT BITCH!
+while true
+do
+    echo
+    read -p "Want to install the Airbender brach of i3? (y/n) >> " YN
+    case $YN in
+        [Yy]* ) sudo apt-get install -y \
+                libxcb1-dev \
+                libxcb-keysyms1-dev \
+                libpango1.0-dev \
+                libxcb-util0-dev \
+                libxcb-icccm4-dev \
+                libyajl-dev \
+                libstartup-notification0-dev \
+                libxcb-randr0-dev \
+                libev-dev \
+                libxcb-cursor-dev \
+                libxcb-xinerama0-dev \
+                libxcb-xkb-dev \
+                libxkbcommon-dev \
+                libxkbcommon-x11-dev
+                git clone https://www.github.com/Airblader/i3 ~/i3-gaps
+                cd ~/i3-gaps
+                git checkout gaps && git pull
+                make
+                sudo make install
+                break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+echo "Asian language input must be set up manually and painfully with fcitx."
+
+
 exit 0
