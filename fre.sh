@@ -49,10 +49,10 @@ confirmation
 
 
 # Install SciPy.
-REPOS=()
-PACKS=("python-numpy" "python-scipy" "python-matplotlib" "ipython" "ipython-notebook" "python-pandas" "python-sympy" "python-nose")
-echo -e "\nWould you like to install SciPy?"
-confirmation
+# REPOS=()
+# PACKS=("python-numpy" "python-scipy" "python-matplotlib" "ipython" "ipython-notebook" "python-pandas" "python-sympy" "python-nose")
+# echo -e "\nWould you like to install SciPy?"
+# confirmation
 
 
 # Install Latex.
@@ -139,25 +139,39 @@ do
 done
 
 
-# Install pip, virtualenv, and virtualenvwrapper.
+# Install miniconda.
 while true
 do
     echo
-    read -p "Install pip, virtualenv, and virtualenvwrapper? (y/n) >> " YN
+    read -p "Install miniconda and avoid tiresome Python bullshit? (y/n) >> " YN
     case $YN in
-        [Yy]* ) curl -o ~/get-pip.py --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py
-                sudo python ~/get-pip.py
-                sudo pip install virtualenv
-                sudo pip install virtualenvwrapper
-                if ! grep "WORKON_HOME=~/Envs" ~/.bashrc     # Check if venvwrapper is already set up.
-                then
-                    echo "WORKON_HOME=~/Envs" >> ~/.bashrc   # Set up venvwrapper if need be.
-                fi
-                source /usr/local/bin/virtualenvwrapper.sh # Activate venvwrapper.
+        [Yy]* ) curl -o ~/miniconda.sh --silent --show-error --retry 5 https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh 
+                bash ~/miniconda.sh
                 break;;
         [Nn]* ) break;;
     esac
 done
+
+
+# Install pip, virtualenv, and virtualenvwrapper.
+# while true
+# do
+#     echo
+#     read -p "Install pip, virtualenv, and virtualenvwrapper? (y/n) >> " YN
+#     case $YN in
+#         [Yy]* ) curl -o ~/get-pip.py --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py
+#                 sudo python ~/get-pip.py
+#                 sudo pip install virtualenv
+#                 sudo pip install virtualenvwrapper
+#                 if ! grep "WORKON_HOME=~/Envs" ~/.bashrc     # Check if venvwrapper is already set up.
+#                 then
+#                     echo "WORKON_HOME=~/Envs" >> ~/.bashrc   # Set up venvwrapper if need be.
+#                 fi
+#                 source /usr/local/bin/virtualenvwrapper.sh # Activate venvwrapper.
+#                 break;;
+#         [Nn]* ) break;;
+#     esac
+# done
 
 
 # Set terminal to 256 colors.
@@ -200,7 +214,7 @@ done
 while true
 do
     echo
-    read -p "Want to install the Airbender brach of i3? (y/n) >> " YN
+    read -p "Want to install the Airblader branch of i3 with gaps? (y/n) >> " YN
     case $YN in
         [Yy]* ) sudo apt-get install -y \
                 libxcb1-dev \
