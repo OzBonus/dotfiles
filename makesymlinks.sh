@@ -9,9 +9,9 @@
 
 ########## Variables
 
-DOTDIR=~/dotfiles            # dotfiles directory
-OLDDIR=~/dotfiles_old     # old dotfiles backup directory
-FILES=".vimrc"  # list of files/folders to symlink in homedir
+DOTDIR=~/dotfiles      # dotfiles directory
+OLDDIR=~/dotfiles_old  # old dotfiles backup directory
+FILES=".vimrc"         # list of files/folders to symlink in homedir
 
 ##########
 
