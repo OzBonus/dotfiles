@@ -214,7 +214,7 @@ done
 while true
 do
     echo
-    read -p "Want to install the Airblader branch of i3 with gaps? (y/n) >> " YN
+    read -p "Want to install the Airblader branch of i3 with gaps and dmenu? (y/n) >> " YN
     case $YN in
         [Yy]* ) sudo apt-get install -y \
                 libxcb1-dev \
@@ -236,6 +236,8 @@ do
                 git checkout gaps && git pull
                 make
                 sudo make install
+                cd
+                sudo apt-get install dmenu -y
                 break;;
         [Nn]* ) break;;
     esac

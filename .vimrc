@@ -38,8 +38,8 @@ call vundle#begin()
 " Let Vundle manage Vundle. Required!
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'bling/vim-airline'
-let g:airline_powerline_fonts=1
+" Plugin 'bling/vim-airline'
+" let g:airline_powerline_fonts=1
 
 Plugin 'scrooloose/nerdtree'
 
@@ -57,9 +57,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'chriskempson/base16-vim'
 let base16colorspace=256
 
-Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'jelera/vim-javascript-syntax'
 
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 
