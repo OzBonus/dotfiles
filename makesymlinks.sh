@@ -33,3 +33,6 @@ for file in $FILES
         echo "Creating symlink to $FILES in home directory."
         ln -s $DOTDIR/$FILES ~/$FILES
     done
+
+# Create symlink for i3-gaps.
+ln -s ~/dotfiles/i3/config ~/.config/i3/config
