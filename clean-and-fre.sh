@@ -1,4 +1,5 @@
 # A much less fancy, but more useable form of necromancy.
+# Honestly, it'll probably break everything.
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -16,6 +17,7 @@ sudo apt-get -y install \
 	feh
 
 # Install i3-gaps.
+# Dropbox must be ready for feh to find the background.
 sudo apt-get install -y \
 	libxcb1-dev \
 	libxcb-keysyms1-dev \
@@ -38,14 +40,19 @@ make
 sudo make install
 cd
 
-# Install miniconda.
-curl -o ~/miniconda.sh --silent --show-error --retry 5 https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash ~/miniconda.sh
-
+# Install miniconda3.
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda3
 export PATH="$HOME/miniconda3/bin:$PATH"
+rm ~/miniconda.sh
+
+# Install iPython and Jupyter Notebook.
+conda install -y ipython-notebook
 
 # Create symlinks.
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/i3/config ~/.config/i3/config
+
+# Install and configure Vundle.
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
