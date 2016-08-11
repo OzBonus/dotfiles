@@ -16,6 +16,11 @@ sudo apt-get -y install \
 	dmenu \
 	feh
 
+# Download and install atom, then delete the package.
+wget -O ~/atom-amd64.deb https://atom.io/download/deb
+sudo dpkg -i atom-amd64.deb
+rm ~/atom-amd64.deb
+
 # Install i3-gaps.
 # Dropbox must be ready for feh to find the background.
 sudo apt-get install -y \
@@ -50,9 +55,9 @@ rm ~/miniconda.sh
 conda install -y ipython-notebook
 
 # Create symlinks.
-ln -s ~/dotfiles/.vimrc ~/.vimrc
+# ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/i3/config ~/.config/i3/config
 
 # Install and configure Vundle.
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+# git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# vim +PluginInstall +qall
