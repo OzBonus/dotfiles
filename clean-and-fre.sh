@@ -19,10 +19,10 @@ sudo apt-get -y install \
 	feh
 
 # Download and install atom, then delete the package.
-#wget -O ~/atom-amd64.deb https://atom.io/download/deb
-#sudo apt-get install gvfs-bin
-#sudo dpkg -i ~/atom-amd64.deb
-#rm ~/atom-amd.deb
+wget -O ~/atom-amd64.deb https://atom.io/download/deb
+sudo apt-get install gvfs-bin
+sudo dpkg -i ~/atom-amd64.deb
+rm ~/atom-amd.deb
 
 # Install i3-gaps.
 # Dropbox must be ready for feh to find the background.
@@ -56,8 +56,8 @@ sudo apt-get -y install \
 # Install miniconda3.
 cd
 wget http://repo.continuum.io/archive/Anaconda3-4.1.1-Linux-x86_64.sh -O ~/anaconda.sh
-#bash ~/anaconda.sh
-#rm ~/anaconda.sh
+bash ~/anaconda.sh
+rm ~/anaconda.sh
 
 # Install iPython and Jupyter Notebook.
 #conda install -y ipython-notebook
