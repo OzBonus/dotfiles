@@ -53,11 +53,12 @@ rm ~/atom-amd.deb
 #bash ~/miniconda.sh -b -p $HOME/miniconda3
 #rm ~/miniconda.sh
 
-# Install miniconda3.
+# Install Anaconda Python and OpenCV
 cd
 wget http://repo.continuum.io/archive/Anaconda3-4.1.1-Linux-x86_64.sh -O ~/anaconda.sh
 bash ~/anaconda.sh
 rm ~/anaconda.sh
+conda install -c menpo opencv3=3.1.0
 
 # Install iPython and Jupyter Notebook.
 #conda install -y ipython-notebook
