@@ -1,3 +1,3 @@
-# Lotta Dots
+# Whole Lotta Dots
 
-Here is a public record of my misadventures in authoring configuration files.
+Dotfiles, scripts, and more, and less.
