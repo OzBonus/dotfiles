@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Nothing to see here."
+sudo apt-get update && sudo apt-get update
