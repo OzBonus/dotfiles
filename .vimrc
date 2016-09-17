@@ -27,6 +27,7 @@ call vundle#begin()                  " Initialize.
 Plugin 'VundleVim/Vundle.vim'        " Let Vundle manage itself.
     Plugin 'scrooloose/nerdtree'     " Filesystem explorer.
     Plugin 'airblade/vim-gitgutter'  " Visual git diff.
+    Plugin 'tpope/vim-fugitive'      " Git wrapper.
     Plugin 'vim-airline/vim-airline' " Awesome status bar.
         set ttimeoutlen=10           " Leave insert mode faster.
         let g:airline_left_sep="" " Left left side seperator.
