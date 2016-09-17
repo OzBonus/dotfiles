@@ -17,9 +17,24 @@
 "   Extra GVim Options
 "   Spaces and Tabs
 "   Searching
+"   Custom Functions
 
 " Vundle
-" TODO
+set nocompatible                     " Ignore Vi relics.
+filetype off                         " Vundle told me so.
+set rtp+=~/.vim/bundle/Vundle.vim    " Set runtime path.
+call vundle#begin()                  " Initialize.
+Plugin 'VundleVim/Vundle.vim'        " Let Vundle manage itself.
+    Plugin 'scrooloose/nerdtree'     " Filesystem explorer.
+    Plugin 'airblade/vim-gitgutter'  " Visual git diff.
+    Plugin 'vim-airline/vim-airline' " Awesome status bar.
+        set ttimeoutlen=10           " Leave insert mode faster.
+        let g:airline_left_sep="" " Left left side seperator.
+        let g:airline_right_sep="" " Set right side seperator.
+    Plugin 'vim-airline/vim-airline-themes'
+        let g:airline_theme='bubblegum'
+call vundle#end()                    " Vundle told me so.
+filetype plugin indent on            " Vundle told me so.
 
 " General
 set history=500         " Sets how many lines of history VIM must remember.
@@ -31,6 +46,8 @@ nmap <leader>s :so%<cr> " Fast sourcing.
 " VIM User Interface and Appearance
 set number         " Show line numbers.
 set cursorline     " Highlight the current line.
+set t_Co=256       " Confirm ability to show 256 colors.
+highlight LineNr ctermfg=grey
 set so=5           " Buffer the cursor with at least five lines.
 syntax enable      " Enable syntax processing.
 set laststatus=2   " Always show status bar.
