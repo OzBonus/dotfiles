@@ -48,6 +48,8 @@ then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+ln -s ~/toolbox/config/.vimrc ~/.vimrc
+
 echo ""
 echo "SUMMARY"
 echo ""
