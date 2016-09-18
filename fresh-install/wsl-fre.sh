@@ -7,7 +7,7 @@ PACKAGES="git \
           tesseract-ocr \
           imagemagick \
           textlive-latex-base \
-          python3-pip"
+          python-pip"
 ALREADY_INSTALLED=""
 NOT_INSTALLED=""
 GUI_FOR_WSL=""
@@ -21,7 +21,7 @@ do
         # Add to list of installed packages.
         NOT_INSTALLED="$NOT_INSTALLED $P"
         # Install a package that is not already installed.
-        sudo apt-get install -y --dry-run $p
+        sudo apt-get install -y $P
     else
         # Add to list of already installed packages.
         ALREADY_INSTALLED="$ALREADY_INSTALLED $P"
@@ -35,6 +35,17 @@ then
     GUI_FOR_WSL="GUI app support has been added to bashrc."
 else
     GUI_FOR_WSL="GUI app support was already added to bashrc."
+fi
+
+# Add virtual environment support to Python 3.
+# For help, see http://docs.python-guide.org/en/latest/dev/virtualenvs/
+sudo pip install virtualenv
+sudo pip install virtualenvwrapper
+if ! grep "export WORKON_HOME=$HOME/.virtualenvs" ~/.bashrc
+then
+    echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
+    echo "export PROJECT_HOME=$HOME/Devel" >> ~/.bashrc
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 echo ""
