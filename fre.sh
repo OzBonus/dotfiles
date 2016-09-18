@@ -145,7 +145,7 @@ do
     echo
     read -p "Install miniconda and avoid tiresome Python bullshit? (y/n) >> " YN
     case $YN in
-        [Yy]* ) curl -o ~/miniconda.sh --silent --show-error --retry 5 https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh 
+        [Yy]* ) curl -o ~/miniconda.sh --silent --show-error --retry 5 https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
                 bash ~/miniconda.sh
                 break;;
         [Nn]* ) break;;
