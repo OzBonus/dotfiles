@@ -11,6 +11,10 @@ PACKAGES="git \
 ALREADY_INSTALLED=""
 NOT_INSTALLED=""
 GUI_FOR_WSL=""
+ANACONDA=""
+
+#sudo apt-get update
+#sudo apt-get upgrade
 
 # Install packages if they are not already installed.
 for P in $PACKAGES
@@ -37,17 +41,18 @@ else
     GUI_FOR_WSL="GUI app support was already added to bashrc."
 fi
 
-# Add virtual environment support to Python 3.
-# For help, see http://docs.python-guide.org/en/latest/dev/virtualenvs/
-sudo pip install virtualenv
-sudo pip install virtualenvwrapper
-if ! grep "export WORKON_HOME=$HOME/.virtualenvs" ~/.bashrc
+if ! type conda >/dev/null 2>&1
 then
-    echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
-    echo "export PROJECT_HOME=$HOME/Devel" >> ~/.bashrc
-    source /usr/local/bin/virtualenvwrapper.sh
+    cd ~/
+    wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
+    bash Anaconda3-4.0.0-Linux-x86_64.sh
+    rm Anaconda3-4.0.0-Linux-x86_64.sh
+    ANACONDA="Anaconda has been installed."
+else
+    ANACONDA="Anaconda was already installed."
 fi
 
+# Symlink vimrc from repository to home directory.
 ln -s ~/toolbox/config/.vimrc ~/.vimrc
 
 echo ""
@@ -61,4 +66,5 @@ echo $NOT_INSTALLED | sed 's/^/  /'
 echo ""
 echo $GUI_FOR_WSL
 echo ""
-
+echo $ANACONDA
+echo ""
