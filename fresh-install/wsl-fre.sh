@@ -1,20 +1,18 @@
 #!/bin/bash
 
 PACKAGES="git \
-          top \
+          htop \
           toilet \
           cowsay \
           tesseract-ocr \
           imagemagick \
-          textlive-latex-base \
-          python-pip"
+          textlive-latex-base"
 ALREADY_INSTALLED=""
 NOT_INSTALLED=""
 GUI_FOR_WSL=""
-ANACONDA=""
 
-#sudo apt-get update
-#sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
 
 # Install packages if they are not already installed.
 for P in $PACKAGES
@@ -39,17 +37,6 @@ then
     GUI_FOR_WSL="GUI app support has been added to bashrc."
 else
     GUI_FOR_WSL="GUI app support was already added to bashrc."
-fi
-
-if ! type conda >/dev/null 2>&1
-then
-    cd ~/
-    wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
-    bash Anaconda3-4.0.0-Linux-x86_64.sh
-    rm Anaconda3-4.0.0-Linux-x86_64.sh
-    ANACONDA="Anaconda has been installed."
-else
-    ANACONDA="Anaconda was already installed."
 fi
 
 # Symlink vimrc from repository to home directory.
