@@ -6,7 +6,11 @@ PACKAGES="git \
           cowsay \
           tesseract-ocr \
           imagemagick \
-          textlive-latex-base"
+          textlive-latex-base \
+          libav-tools \
+          mc \
+          ruby-ful \
+          python3-pip"
 ALREADY_INSTALLED=""
 NOT_INSTALLED=""
 GUI_FOR_WSL=""
@@ -52,6 +56,4 @@ echo "These packages were installed:"
 echo $NOT_INSTALLED | sed 's/^/  /'
 echo ""
 echo $GUI_FOR_WSL
-echo ""
-echo $ANACONDA
 echo ""
