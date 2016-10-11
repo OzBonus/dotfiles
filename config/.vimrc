@@ -31,6 +31,7 @@ Plugin 'VundleVim/Vundle.vim'        " Let Vundle manage itself.
     Plugin 'godlygeek/tabular'       " Line up text.
     Plugin 'jiangmiao/auto-pairs'    " Add complementary brackets.
     Plugin 'vim-airline/vim-airline' " Awesome status bar.
+    Plugin 'chriskempson/base16-vim' " Base 16 color schemes.
         set ttimeoutlen=10           " Leave insert mode faster.
         let g:airline_left_sep=''    " Left left side seperator.
         let g:airline_right_sep=''   " Set right side seperator.
@@ -60,6 +61,7 @@ set noerrorbells   " Disable obnoxious bells.
 set visualbell     " Disable obnoxious bells.
 set ttyfast        " Fix scrolling issues on WSL.
 set cursorline     " Highlight the current line.
+colorscheme base16-default-dark
 hi LineNr ctermfg=darkgrey
 hi CursorLineNr ctermbg=red ctermfg=white
 hi Visual ctermbg=white ctermfg=black
