@@ -84,7 +84,7 @@ endif
 set tabstop=4      " Visual spaces per tab character.
 set softtabstop=4  " Number of spaces in a new tab.
 set expandtab      " New tabs are spaces.
-filetype indent on " Load indent files. TODO
+autocmd FileType sh let b:did_indent=1
 
 " Searching
 set wildmenu                             " Visual auto complete for the command menu.
