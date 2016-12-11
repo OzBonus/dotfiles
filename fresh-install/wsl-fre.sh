@@ -35,13 +35,13 @@ do
 done
 
 # Add GUI app support to WSL.
-if ! grep "DISPLAY=:0" ~/.bashrc
-then
-    echo "DISPLAY=:0" >> ~/.bashrc
-    GUI_FOR_WSL="GUI app support has been added to bashrc."
-else
-    GUI_FOR_WSL="GUI app support was already added to bashrc."
-fi
+#if ! grep "DISPLAY=:0" ~/.bashrc
+#then
+#    echo "DISPLAY=:0" >> ~/.bashrc
+#    GUI_FOR_WSL="GUI app support has been added to bashrc."
+#else
+#    GUI_FOR_WSL="GUI app support was already added to bashrc."
+#fi
 
 # Symlink vimrc from repository to home directory.
 ln -s ~/toolbox/config/.vimrc ~/.vimrc
