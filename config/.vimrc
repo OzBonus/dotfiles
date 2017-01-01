@@ -38,6 +38,7 @@ Plugin 'VundleVim/Vundle.vim'        " Let Vundle manage itself.
         let g:airline_right_sep=''   " Set right side seperator.
     Plugin 'vim-airline/vim-airline-themes'
         let g:airline_theme='bubblegum'
+    Plugin 'tpope/vim-surround'      " Easy surrounding stuff.
 call vundle#end()                    " Vundle told me so.
 filetype plugin indent on            " Vundle told me so.
 
