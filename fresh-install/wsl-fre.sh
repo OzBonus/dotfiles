@@ -9,8 +9,7 @@ PACKAGES="git \
           textlive-latex-base \
           libav-tools \
           mc \
-          ruby-ful \
-          python3-pip"
+          ruby-full "
 ALREADY_INSTALLED=""
 NOT_INSTALLED=""
 GUI_FOR_WSL=""
