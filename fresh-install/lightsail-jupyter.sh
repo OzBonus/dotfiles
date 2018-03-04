@@ -1,3 +1,6 @@
+# This is the version of Anaconda that you want.
+ANACONDA="anaconda3-5.1.0"
+
 # Download and install pyenv.
 curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 
@@ -37,11 +40,11 @@ cd ~/
 # Lines will be appended to the end of the file.
 # ubuntu is the default user for Lightsail Ubuntu installations.
 jupyter notebook --generate-config
-cat <<'END' >> ~/.jupyter/jupyter_notebook_config.py
+cat <<END >> ~/.jupyter/jupyter_notebook_config.py
 c.NotebookApp.open_browser = True
 c.NotebookApp.ip = '*'
-c.NotebookApp.keyfile = '/home/ubuntu/.jupyter/keys/mykey.key'
-c.NotebookApp.certfile = '/home/ubuntu/.jupyter/keys/mycert.pem'
+c.NotebookApp.keyfile = '/home/$(whoami)/.jupyter/keys/mykey.key'
+c.NotebookApp.certfile = '/home/$(whoami)/.jupyter/keys/mycert.pem'
 END
 
 # Create a startup script and make it executable.
