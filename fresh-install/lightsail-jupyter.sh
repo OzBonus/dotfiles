@@ -16,14 +16,13 @@ source ~/.bash_profile
 pyenv update
 
 # Install Anaconda's distribution of Python 3.
-# Update the version as needed.
-pyenv install anaconda3-5.1.0
+pyenv install $ANACONDA
 
 # Activate Anaconda.
-pyenv activate anaconda3-5.1.0
+# pyenv activate $ANACONDA
 
 # Enable password login.
-jupyter notebook password
+# jupyter notebook password
 
 # Enable SSL.
 mkdir -p ~/.jupyter/keys
@@ -41,17 +40,16 @@ cd ~/
 # ubuntu is the default user for Lightsail Ubuntu installations.
 jupyter notebook --generate-config
 cat <<END >> ~/.jupyter/jupyter_notebook_config.py
-c.NotebookApp.open_browser = True
+c.NotebookApp.open_browser = False
 c.NotebookApp.ip = '*'
 c.NotebookApp.keyfile = '/home/$(whoami)/.jupyter/keys/mykey.key'
 c.NotebookApp.certfile = '/home/$(whoami)/.jupyter/keys/mycert.pem'
 END
 
 # Create a startup script and make it executable.
-cat <<'END' >> ~/jupyterlab.sh
+cat <<END >> ~/jupyterlab.sh
 #!/bin/bash
-# eval "$(pyenv init -)"
-pyenv activate anaconda3-5.1.0
+pyenv activate $ANACONDA
 cd ~/
 jupyter lab
 END
@@ -61,7 +59,7 @@ chmod +x ~/jupyterlab.sh
 mkdir -p ~/.config/systemd/user/
 cat <<'END' >> ~/.config/systemd/user/jupyterlab.service
 [Unit]
-Description=Service to run Jupyterlab is user space
+Description=Service to run Jupyterlab in user space
 
 [Service]
 ExecStart=/bin/bash -c "source ~/.bash_profile; eval ~/jupyterlab.sh"
