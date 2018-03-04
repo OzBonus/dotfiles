@@ -29,9 +29,9 @@ openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout mykey.key -out mycer
 cd ~/
 
 # Install nvm and Node.js.
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | PROFILE=~/.bash_profile bash
-source ~/.bash_profile
-nvm install -lts
+# curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | PROFILE=~/.bash_profile bash
+# source ~/.bash_profile
+# nvm install -lts
 
 # Set Jupyter configuration options.
 # Lines will be appended to the end of the file.
