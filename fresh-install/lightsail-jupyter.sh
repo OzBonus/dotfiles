@@ -59,12 +59,12 @@ chmod +x ~/jupyterlab.sh
 
 # Run Jupyterlab as a service.
 mkdir -p ~/.config/systemd/user/
-cat <<'END' >> ~/.config/systemd/user/jupyterlab.service
+cat <<END >> ~/.config/systemd/user/jupyterlab.service
 [Unit]
 Description=Service to run Jupyterlab in user space
 
 [Service]
-ExecStart=/bin/bash -c "source ~/.bash_profile; eval ~/jupyterlab.sh"
+ExecStart=/home/$(whoami)/jupyterlab.sh
 
 [Install]
 WantedBy=default.target
