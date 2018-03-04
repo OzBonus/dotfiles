@@ -38,6 +38,7 @@ cd ~/
 # Set Jupyter configuration options.
 # Lines will be appended to the end of the file.
 # ubuntu is the default user for Lightsail Ubuntu installations.
+pyenv activate $ANACONDA
 jupyter notebook --generate-config
 cat <<END >> ~/.jupyter/jupyter_notebook_config.py
 c.NotebookApp.open_browser = False
@@ -45,6 +46,7 @@ c.NotebookApp.ip = '*'
 c.NotebookApp.keyfile = '/home/$(whoami)/.jupyter/keys/mykey.key'
 c.NotebookApp.certfile = '/home/$(whoami)/.jupyter/keys/mycert.pem'
 END
+pyenv deactivate
 
 # Create a startup script and make it executable.
 cat <<END >> ~/jupyterlab.sh
