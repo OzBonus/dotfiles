@@ -14,10 +14,10 @@ pyenv update
 
 # Install Anaconda's distribution of Python 3.
 # Update the version as needed.
-pyenv install anaconda3-5.0.1
+pyenv install anaconda3-5.1.0
 
 # Activate Anaconda.
-pyenv activate anaconda3-5.0.1
+pyenv activate anaconda3-5.1.0
 
 # Enable password login.
 jupyter notebook password
@@ -47,7 +47,7 @@ END
 # Create a startup script and make it executable.
 cat <<'END' >> ~/jupyterlab.sh
 #!/bin/bash
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 pyenv activate anaconda3-5.1.0
 cd ~/
 jupyter lab
