@@ -47,6 +47,10 @@ c.NotebookApp.certfile = '/home/$(whoami)/.jupyter/keys/mycert.pem'
 END
 pyenv deactivate
 
+
+# -- Everything above this line works as intended. ----------------------------------------------->8
+
+
 # Create a startup script and make it executable.
 # cat <<END >> ~/jupyterlab.sh
 # #!/bin/bash
