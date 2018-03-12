@@ -22,6 +22,7 @@ pyenv install $ANACONDA
 pyenv activate $ANACONDA
 
 # Enable password login.
+jupyter notebook --generate-config
 jupyter notebook password
 
 # Enable SSL.
@@ -38,7 +39,6 @@ nvm install -lts
 # Set Jupyter configuration options.
 # Lines will be appended to the end of the file.
 pyenv activate $ANACONDA
-jupyter notebook --generate-config
 cat <<END >> ~/.jupyter/jupyter_notebook_config.py
 c.NotebookApp.open_browser = False
 c.NotebookApp.ip = '*'
