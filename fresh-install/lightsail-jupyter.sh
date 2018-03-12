@@ -19,10 +19,10 @@ pyenv update
 pyenv install $ANACONDA
 
 # Activate Anaconda.
-# pyenv activate $ANACONDA
+pyenv activate $ANACONDA
 
 # Enable password login.
-# jupyter notebook password
+jupyter notebook password
 
 # Enable SSL.
 mkdir -p ~/.jupyter/keys
@@ -31,13 +31,12 @@ openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout mykey.key -out mycer
 cd ~/
 
 # Install nvm and Node.js.
-# curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | PROFILE=~/.bash_profile bash
-# source ~/.bash_profile
-# nvm install -lts
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | PROFILE=~/.bash_profile bash
+source ~/.bash_profile
+nvm install -lts
 
 # Set Jupyter configuration options.
 # Lines will be appended to the end of the file.
-# ubuntu is the default user for Lightsail Ubuntu installations.
 pyenv activate $ANACONDA
 jupyter notebook --generate-config
 cat <<END >> ~/.jupyter/jupyter_notebook_config.py
@@ -49,27 +48,27 @@ END
 pyenv deactivate
 
 # Create a startup script and make it executable.
-cat <<END >> ~/jupyterlab.sh
-#!/bin/bash
-pyenv activate $ANACONDA
-cd ~/
-jupyter lab
-END
-chmod +x ~/jupyterlab.sh
+# cat <<END >> ~/jupyterlab.sh
+# #!/bin/bash
+# pyenv activate $ANACONDA
+# cd ~/
+# jupyter lab
+# END
+# chmod +x ~/jupyterlab.sh
 
 # Run Jupyterlab as a service.
-mkdir -p ~/.config/systemd/user/
-cat <<END >> ~/.config/systemd/user/jupyterlab.service
-[Unit]
-Description=Service to run Jupyterlab in user space
-
-[Service]
-ExecStart=/home/$(whoami)/jupyterlab.sh
-
-[Install]
-WantedBy=default.target
-END
-systemctl --user enable jupyterlab.service
+# mkdir -p ~/.config/systemd/user/
+# cat <<END >> ~/.config/systemd/user/jupyterlab.service
+# [Unit]
+# Description=Service to run Jupyterlab in user space
+# 
+# [Service]
+# ExecStart=/home/$(whoami)/jupyterlab.sh
+# 
+# [Install]
+# WantedBy=default.target
+# END
+# systemctl --user enable jupyterlab.service
 
 # Finish.
 echo "The installation script has finished."
