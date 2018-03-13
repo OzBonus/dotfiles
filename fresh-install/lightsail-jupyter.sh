@@ -52,13 +52,14 @@ pyenv deactivate
 
 
 # Create a startup script and make it executable.
-# cat <<END >> ~/jupyterlab.sh
-# #!/bin/bash
-# pyenv activate $ANACONDA
-# cd ~/
-# jupyter lab
-# END
-# chmod +x ~/jupyterlab.sh
+cat <<END >> ~/jupyterlab.sh
+#!/bin/bash
+. ~/.bash_profile
+pyenv activate $ANACONDA
+cd ~/
+jupyter lab
+END
+chmod +x ~/jupyterlab.sh
 
 # Run Jupyterlab as a service.
 # mkdir -p ~/.config/systemd/user/
