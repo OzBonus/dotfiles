@@ -62,18 +62,25 @@ END
 chmod +x ~/jupyterlab.sh
 
 # Run Jupyterlab as a service.
-# mkdir -p ~/.config/systemd/user/
-# cat <<END >> ~/.config/systemd/user/jupyterlab.service
-# [Unit]
-# Description=Service to run Jupyterlab in user space
-# 
-# [Service]
-# ExecStart=/home/$(whoami)/jupyterlab.sh
-# 
-# [Install]
-# WantedBy=default.target
-# END
-# systemctl --user enable jupyterlab.service
+sudo mkdir -p /usr/lib/systemd/system/
+cat <<END >> /usr/lib/systemd/system/jupyterlab.service
+[Unit]
+Description=Service to run Jupyterlab at startup
+
+[Service]
+Type=simple
+PIDFile=/var/run/jupyterlab.pid
+ExecStart=/bin/bash /home/$(whoami)/jupyterlab.sh
+User=$(whoami)
+Group=$(whoami)
+WorkingDirectory=/home/$(whoami)
+
+[Install]
+WantedBy=default.target
+END
+sudo systemctl daemon-reload
+sudo systemctl enable jupyterlab.service
+sudo systemctl start jupyterlab.service
 
 # Finish.
 echo "The installation script has finished."
