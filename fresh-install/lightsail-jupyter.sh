@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 # This is the version of Anaconda that you want.
 ANACONDA="anaconda3-5.1.0"
 
@@ -44,8 +46,8 @@ pyenv activate $ANACONDA
 cat <<END >> ~/.jupyter/jupyter_notebook_config.py
 c.NotebookApp.open_browser = False
 c.NotebookApp.ip = '*'
-c.NotebookApp.keyfile = '/home/$(whoami)/.jupyter/keys/mykey.key'
-c.NotebookApp.certfile = '/home/$(whoami)/.jupyter/keys/mycert.pem'
+c.NotebookApp.keyfile = '/home/$SUDO_USER/.jupyter/keys/mykey.key'
+c.NotebookApp.certfile = '/home/$SUDO_USER/.jupyter/keys/mycert.pem'
 END
 pyenv deactivate
 
@@ -72,10 +74,10 @@ Description=Service to run Jupyterlab at startup
 [Service]
 Type=simple
 PIDFile=/var/run/jupyterlab.pid
-ExecStart=/bin/bash /home/$(whoami)/jupyterlab.sh
-User=$(whoami)
-Group=$(whoami)
-WorkingDirectory=/home/$(whoami)
+ExecStart=/bin/bash /home/$SUDO_USER/jupyterlab.sh
+User=$SUDO_USER
+Group=$SUDO_USER
+WorkingDirectory=/home/$SUDO_USER
 
 [Install]
 WantedBy=default.target
