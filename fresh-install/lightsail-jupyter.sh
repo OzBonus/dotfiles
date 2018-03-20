@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This is the version of Anaconda that you want.
 ANACONDA="anaconda3-5.1.0"
 
