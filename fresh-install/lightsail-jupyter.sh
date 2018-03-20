@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $EUID -ne 0  ]]; then
+  echo "Please run this script as root."
+  exit 1
+fi
+
 # This is the version of Anaconda that you want.
 ANACONDA="anaconda3-5.1.0"
 
