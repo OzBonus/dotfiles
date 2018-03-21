@@ -54,6 +54,9 @@ c.NotebookApp.certfile = '/home/$SUDO_USER/.jupyter/keys/mycert.pem'
 END
 pyenv deactivate
 
+# Make sure user has the permission to access ~/.jupyer.
+chown $SUDO_USER: /home/$SUDO_USER/.jupyter/
+
 # Create a startup script and make it executable.
 cat <<END >> ~/jupyterlab.sh
 #!/bin/bash
