@@ -54,8 +54,6 @@ c.NotebookApp.certfile = '/home/$SUDO_USER/.jupyter/keys/mycert.pem'
 END
 pyenv deactivate
 
-# Make sure user has the permission to access ~/.jupyer.
-chown $SUDO_USER: /home/$SUDO_USER/.jupyter/
 
 # Create a startup script and make it executable.
 cat <<END >> ~/jupyterlab.sh
@@ -66,6 +64,9 @@ cd ~/
 jupyter lab
 END
 chmod +x ~/jupyterlab.sh
+
+# Make sure user has permissions for their home folder contents.
+chown -R $SUDO_USER: /home/$SUDO_USER/
 
 # Run Jupyterlab as a service.
 sudo mkdir -p /usr/lib/systemd/system/
