@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit upon any non-zero exit code.
+set -e
+
 # Politely ask the user to run as root.
 if [[ $EUID -ne 0  ]]; then
   echo "Please run this script as root."
